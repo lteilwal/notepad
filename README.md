@@ -3,15 +3,15 @@ Basic CLI Notepad made using CPP
 
 --
 
-##Build Instructions:
+## Build Instructions:
 ### Requirements
 - CMake 3.21 or later
 - C++ 17 compatible compiler
 
-###Build
+### Build
 - cmake -B build
 - cmake --build build
 
-###Run
+### Run
 - Windows: Run the .exe files
 - ./build/NotepadCLI
