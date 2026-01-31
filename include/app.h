@@ -31,3 +31,6 @@ void replaceLine(strvec& fileVector, const std::string fileName);
 void deleteLine(strvec& fileVector, const std::string fileName);
 fileactionChoice fileAction();
 editChoice editAction();
+void clearScreen();
+void printHeader();
+void waitEnter();

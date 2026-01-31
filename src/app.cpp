@@ -12,8 +12,13 @@ namespace fs = std::filesystem;
 
 void App::run() {
 	startFunc();
-	std::string fileName = getFileName();
-	openFileFlow(fileName);
+	while (true) {
+		clearScreen();
+		printHeader();
+		std::string fileName = getFileName();
+		openFileFlow(fileName);
+		waitEnter();
+	}
 }
 
 std::string App::getFileName() {
@@ -27,6 +32,14 @@ std::string App::getFileName() {
 		fileName += ".txt";
 	}
 	return fileName;
+}
+
+void clearScreen() {
+#ifdef _WIN32
+	system("cls");
+#else
+	system("clear");
+#endif
 }
 
 void App::openFileFlow(const std::string& fileName) {
@@ -87,12 +100,21 @@ void listExisting() {	//Print text files in notes directory
 }
 
 void startFunc() {
-	printStr("\tNOTESAPP");
 	//Create notes directory
 	if (!fs::exists("notes")) {
 		fs::create_directory("notes");
 	}
+}
+
+void printHeader() {
+	printStr("\tNOTESAPP");
 	listExisting();
+}
+
+void waitEnter() {
+	printStr("Press Enter to CONTINUE");
+	std::string _;
+	std::getline(std::cin, _);
 }
 
 void timestampCreate(std::string& fileName) {	//Timestamp created if name empty
